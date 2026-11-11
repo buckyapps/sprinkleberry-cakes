@@ -16,11 +16,12 @@ get_header();
 		</div>
 		<div class="container hero-content-wrap">
 			<div class="hero-content fade-up">
-				<h1>
+				<h1 class="screen-reader">Cheesecake, Custom Cakes & Desserts in Clearfield, Utah</h1>
+				<p class="hero-display" aria-hidden="true">
 					<span class="hero-line hero-cakes">Artisan Cakes</span>
 					<span class="hero-line hero-desserts">Desserts <em>&amp;</em></span>
 					<span class="hero-line hero-treats">Sweet Treats</span>
-				</h1>
+				</p>
 				<p>Handmade custom cakes, cupcakes, and Brazilian-inspired desserts for birthdays, weddings, and every sweet celebration in Northern Utah.</p>
 				<div class="hero-buttons">
 					<a href="<?php echo esc_url( home_url( '/about/#contact' ) ); ?>" class="btn btn-primary">Order Now</a>
