@@ -73,7 +73,6 @@ $cats = array(
 					</div>
 					<div class="cake-card-content">
 						<p><?php echo esc_html( $cat['text'] ); ?></p>
-						<span class="tag"><?php echo esc_html( $cat['tag'] ); ?></span>
 					</div>
 				</a>
 			<?php endforeach; ?>
