@@ -4,6 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $maps = 'https://share.google/SR1xUsRwcMQeOmlZv';
 ?>
+<style>
+.contact{background:linear-gradient(135deg,#4a9d8c 0%,#6eb8a8 100%) !important;color:#fff !important;}
+.contact .section-header h2,.contact .section-header p,.contact-info,.contact-info h3,.contact-info p,.contact-info a{color:#fff !important;}
+.order-form{background:#f7c5d0 !important;color:#2c2a28 !important;}
+.order-form h3,.form-group label{color:#2c2a28 !important;}
+.form-group input,.form-group textarea,.form-group select{background:#fff !important;color:#2c2a28 !important;border:1px solid #e89aab !important;}
+</style>
 <section class="section contact" id="contact">
 	<div class="container">
 		<div class="section-header fade-up">
