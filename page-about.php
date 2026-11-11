@@ -9,7 +9,7 @@ get_header();
 	<section class="page-hero">
 		<div class="container page-hero-inner fade-up">
 			<p class="page-kicker">Sprinkle Berry Cakes &amp; Desserts</p>
-			<h1>Meet Raquel</h1>
+			<h1>Meet Raquel, Clearfield's Custom Cake Baker</h1>
 			<p>The baker behind the custom cakes, cupcakes, and sweet treats in Clearfield, Utah.</p>
 		</div>
 	</section>
@@ -17,7 +17,7 @@ get_header();
 	<section class="section about" id="about">
 		<div class="container about-grid">
 			<div class="about-image fade-up">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/chocolate-cupcakes.png" alt="Chocolate cupcakes with colorful candies">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/chocolate-cupcakes.png" alt="Chocolate cupcakes with colorful candy decorations, made by Raquel in Clearfield, UT">
 			</div>
 			<div class="about-content fade-up">
 				<h2>A bakery built with love</h2>
@@ -27,15 +27,15 @@ get_header();
 
 				<div class="about-stats">
 					<div class="stat">
-						<h4>98%</h4>
+						<p class="stat-value">98%</p>
 						<span>Recommend</span>
 					</div>
 					<div class="stat">
-						<h4>Custom</h4>
+						<p class="stat-value">Custom</p>
 						<span>Every Cake</span>
 					</div>
 					<div class="stat">
-						<h4>❤️</h4>
+						<p class="stat-value">❤️</p>
 						<span>Made with Love</span>
 					</div>
 				</div>
