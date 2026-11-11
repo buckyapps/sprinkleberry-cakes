@@ -4,7 +4,7 @@
  */
 get_header();
 
-$title          = 'Desserts';
+$title          = 'Desserts in Clearfield, Utah';
 $intro          = 'Fresh desserts from Raquel’s kitchen — tres leches, Brazilian-inspired sweets, and plated treats for parties or a simple after-dinner bite.';
 $cta_label      = 'Order Desserts Now';
 $order_type     = 'desserts';
