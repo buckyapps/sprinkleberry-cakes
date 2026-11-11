@@ -4,7 +4,7 @@
  */
 get_header();
 
-$title          = 'Cheesecakes';
+$title          = 'Cheesecake in Clearfield, Utah';
 $intro          = 'Creamy cheesecakes by the slice or whole cake — including favorites like Biscoff and caramel. Ask about flavors available this week.';
 $cta_label      = 'Order Cheesecake Now';
 $order_type     = 'cheesecake';
