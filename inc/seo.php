@@ -101,8 +101,8 @@ function sprinkleberry_meta_tags() {
 	$url   = is_front_page() ? home_url( '/' ) : get_permalink();
 	$image = get_template_directory_uri() . '/assets/images/cheesecake-biscoff.jpg';
 	echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
-	if ( is_page( 'parfaits' ) ) {
-		echo '<meta name="robots" content="noindex,follow">' . "\n";
+	if ( is_page( array( 'parfaits', 'orders' ) ) ) {
+		echo '<meta name="robots" content="noindex,nofollow">' . "\n";
 	}
 	echo '<link rel="canonical" href="' . esc_url( $url ) . '">' . "\n";
 	echo '<meta property="og:title" content="' . esc_attr( $seo['title'] ) . '">' . "\n";
