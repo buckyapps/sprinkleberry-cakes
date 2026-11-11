@@ -53,6 +53,24 @@ get_header();
 		</div>
 	</section>
 
+
+	<section class="section faq" id="faq">
+		<div class="container">
+			<div class="section-header fade-up">
+				<h2>Bakery questions</h2>
+				<p>Hours, orders, and how to reach Raquel in Clearfield.</p>
+			</div>
+			<div class="faq-list">
+				<?php foreach ( sprinkleberry_faq_items() as $item ) : ?>
+				<details class="faq-item fade-up">
+					<summary><?php echo esc_html( $item['q'] ); ?></summary>
+					<p><?php echo esc_html( $item['a'] ); ?></p>
+				</details>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
 	<?php include get_template_directory() . '/inc/instagram-feed.php'; ?>
 
 </main>
