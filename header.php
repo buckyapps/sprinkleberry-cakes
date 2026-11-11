@@ -7,11 +7,12 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header" id="site-header">
 	<div class="container header-inner">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-logo">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-header-v2.png?v=120" alt="Sprinkle Berry Cakes & Desserts by Raquel – Artisan" class="logo-img">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-header-v2.png?v=120" alt="Sprinkle Berry Cakes & Desserts logo" class="logo-img">
 		</a>
 
 		<button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
