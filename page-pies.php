@@ -4,7 +4,7 @@
  */
 get_header();
 
-$title          = 'Pies';
+$title          = 'Homemade Pies in Clearfield, Utah';
 $intro          = 'Homemade pies for holidays, Sunday dinner, or a simple sweet finish. Tell Raquel the flavor and date you need it.';
 $cta_label      = 'Order Pies Now';
 $order_type     = 'pies';
