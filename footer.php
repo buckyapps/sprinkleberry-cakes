@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="footer-links">
-				<h4>Visit Us</h4>
+				<p class="footer-heading">Visit Us</p>
 				<ul>
 					<li><a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x8753032800c53519:0x54709fbafa1cbf89?entry=s&sa=X&ved=2ahUKEwilkPHwoLqWAxVSH0QIHW8TFiEQ4kB6BAgVEAA&hl=en" target="_blank" rel="noopener" style="font-weight:700; text-decoration:underline;">540 E 1700 S Suite #101</a></li>
 					<li><a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x8753032800c53519:0x54709fbafa1cbf89?entry=s&sa=X&ved=2ahUKEwilkPHwoLqWAxVSH0QIHW8TFiEQ4kB6BAgVEAA&hl=en" target="_blank" rel="noopener" style="font-weight:700; text-decoration:underline;">Clearfield, UT 84015</a></li>
@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="footer-links">
-				<h4>Shop</h4>
+				<p class="footer-heading">Shop</p>
 				<ul>
 					<li><a href="<?php echo esc_url( home_url( '/artisan-cakes/' ) ); ?>">Artisan Cakes</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/cupcakes/' ) ); ?>">Cupcakes</a></li>
@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="footer-links">
-				<h4>Hours</h4>
+				<p class="footer-heading">Hours</p>
 				<ul>
 					<li>Tue – Fri: 10 AM – 6 PM</li>
 					<li>Saturday: 10 AM – 4 PM</li>
