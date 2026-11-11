@@ -5,7 +5,7 @@
 
 get_header();
 
-$title          = 'Sweet Treats';
+$title          = 'Cake Pops & Sweet Treats in Clearfield, Utah';
 $intro          = 'Little extras that make a celebration feel complete — chocolate-covered strawberries, cake pops, pastries, and other handmade delicacies from Raquel’s kitchen.';
 $cta_label      = 'Order My Sweet Treats Now';
 $order_type     = 'sweet-treats';
