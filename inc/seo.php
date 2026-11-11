@@ -7,35 +7,35 @@ function sprinkleberry_seo_map() {
 	return array(
 		'home' => array(
 			'title' => 'Cheesecake, Custom Cakes & Desserts in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Custom cakes, cheesecake, cupcakes, pies, and Brazilian-inspired desserts from Raquel in Clearfield, Utah. Order for birthdays, weddings, and parties.',
+			'desc'  => 'Handmade cheesecakes, custom cakes, cupcakes, pies and Brazilian-inspired desserts in Clearfield, Utah. Open Tue-Sat. Call (801) 825-6702.',
 		),
 		'artisan-cakes' => array(
-			'title' => 'Custom Cakes in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Handmade custom cakes in Clearfield for birthdays, weddings, and baby showers. Share a theme and date and Raquel will design one just for you.',
+			'title' => 'Custom Cakes in Clearfield & Davis County, UT | Sprinkle Berry',
+			'desc'  => 'Custom birthday, wedding and shower cakes designed around your theme in Clearfield, UT. Kids cakes are a specialty. Send your date and ideas.',
 		),
 		'cupcakes' => array(
-			'title' => 'Cupcakes in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Made-to-order cupcakes in Clearfield, Utah. Choose themes, flavors, and colors for parties, dessert tables, and sweet boxes.',
+			'title' => 'Custom Cupcakes in Clearfield, UT | Sprinkle Berry',
+			'desc'  => 'Made-to-order cupcakes by the dozen for birthdays, school parties and dessert tables in Clearfield, Utah. Choose flavors, colors and themes.',
 		),
 		'desserts' => array(
-			'title' => 'Desserts in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Tres leches, Brazilian-inspired sweets, and plated desserts in Clearfield. Order for gatherings or a simple after-dinner treat from Raquel.',
+			'title' => 'Dessert Shop in Clearfield, UT | Tres Leches & More',
+			'desc'  => 'Tres leches, cannoli and Brazilian-inspired desserts from Sprinkle Berry, a Clearfield, Utah dessert shop. Order for parties.',
 		),
 		'cheesecakes' => array(
-			'title' => 'Cheesecake in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Creamy cheesecakes by the slice or whole cake in Clearfield, including Biscoff and caramel. Ask Raquel about this week’s flavors.',
+			'title' => 'Cheesecake in Clearfield, UT: Biscoff, Caramel & More',
+			'desc'  => 'Handmade cheesecake by the slice or whole in Clearfield, UT. Biscoff, caramel and rotating flavors. Ask what is fresh and order from Sprinkle Berry.',
 		),
 		'pies' => array(
-			'title' => 'Pies in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Homemade pies in Clearfield for holidays, Sunday dinner, or a simple sweet finish. Tell Raquel the flavor and the date you need it.',
+			'title' => 'Homemade Pies in Clearfield, UT | Sprinkle Berry',
+			'desc'  => 'Order homemade lemon cream and other pies in Clearfield, Utah for holidays and everyday. Pickup at Sprinkle Berry.',
 		),
 		'sweet-treats' => array(
-			'title' => 'Sweet Treats in Clearfield, UT | Sprinkle Berry',
-			'desc'  => 'Cake pops, chocolate-covered strawberries, and little handmade treats from Raquel’s kitchen in Clearfield, Utah.',
+			'title' => 'Cake Pops & Chocolate Strawberries in Clearfield, UT',
+			'desc'  => 'Handmade cake pops, chocolate-covered strawberries and sweet treats for gifts and parties in Clearfield, Utah. Order ahead from Sprinkle Berry.',
 		),
 		'about' => array(
-			'title' => 'About Raquel | Sprinkle Berry Cakes Clearfield',
-			'desc'  => 'Meet Raquel Oreggia, the baker behind Sprinkle Berry Cakes & Desserts in Clearfield, Utah. Custom cakes, Brazilian flavors, and a military discount.',
+			'title' => 'About Raquel | Clearfield Bakery | Sprinkle Berry',
+			'desc'  => 'Meet Raquel Oreggia, the Brazilian-born baker behind Sprinkle Berry in Clearfield, Utah, near Hill Air Force Base. Military discount on request.',
 		),
 	);
 }
@@ -99,8 +99,11 @@ function sprinkleberry_meta_tags() {
 	$seo   = sprinkleberry_current_seo();
 	$desc  = $seo['desc'];
 	$url   = is_front_page() ? home_url( '/' ) : get_permalink();
-	$image = get_template_directory_uri() . '/assets/images/cake-floral.jpg';
+	$image = get_template_directory_uri() . '/assets/images/cheesecake-biscoff.jpg';
 	echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
+	if ( is_page( 'parfaits' ) ) {
+		echo '<meta name="robots" content="noindex,follow">' . "\n";
+	}
 	echo '<link rel="canonical" href="' . esc_url( $url ) . '">' . "\n";
 	echo '<meta property="og:title" content="' . esc_attr( $seo['title'] ) . '">' . "\n";
 	echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
@@ -120,9 +123,15 @@ function sprinkleberry_bakery_schema() {
 	$schema = array(
 		'@context'    => 'https://schema.org',
 		'@type'       => array( 'Bakery', 'LocalBusiness' ),
+		'@id'         => home_url( '/#bakery' ),
 		'name'        => 'Sprinkle Berry Cakes & Desserts',
+		'alternateName' => 'Sprinkle Berry by Raquel',
 		'url'         => home_url( '/' ),
-		'image'       => get_template_directory_uri() . '/assets/images/logo-header-v2.png',
+		'logo'        => get_template_directory_uri() . '/assets/images/logo-header-v2.png',
+		'image'       => get_template_directory_uri() . '/assets/images/cheesecake-biscoff.jpg',
+		'description' => 'Handmade cheesecakes, custom cakes, cupcakes, pies and Brazilian-inspired desserts in Clearfield, Utah.',
+		'servesCuisine' => array( 'Desserts', 'Cakes', 'Cheesecake', 'Brazilian' ),
+		'founder'     => array( '@type' => 'Person', 'name' => 'Raquel Oreggia' ),
 		'telephone'   => '+18018256702',
 		'email'       => 'Raoreggia@gmail.com',
 		'priceRange'  => '$$',
@@ -136,8 +145,8 @@ function sprinkleberry_bakery_schema() {
 		),
 		'geo'         => array(
 			'@type'     => 'GeoCoordinates',
-			'latitude'  => 41.1107,
-			'longitude' => -112.026,
+			'latitude'  => 41.08857,
+			'longitude' => -112.015641,
 		),
 		'openingHoursSpecification' => array(
 			array(
@@ -154,12 +163,11 @@ function sprinkleberry_bakery_schema() {
 			),
 		),
 		'areaServed'  => array(
-			'Clearfield, UT',
-			'Layton, UT',
-			'Roy, UT',
-			'Syracuse, UT',
-			'Ogden, UT',
-			'Davis County, UT',
+			array( '@type' => 'City', 'name' => 'Clearfield' ),
+			array( '@type' => 'City', 'name' => 'Layton' ),
+			array( '@type' => 'City', 'name' => 'Syracuse' ),
+			array( '@type' => 'City', 'name' => 'Clinton' ),
+			array( '@type' => 'City', 'name' => 'Roy' ),
 		),
 		'sameAs'      => array(
 			'https://www.instagram.com/sprinkleberrycakes/',
