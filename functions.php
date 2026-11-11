@@ -47,7 +47,7 @@ function sprinkleberry_scripts() {
 		'sprinkleberry-style',
 		get_stylesheet_uri(),
 		array( 'sprinkleberry-fonts' ),
-		'1.7.11'
+		'1.7.12'
 	);
 
 	// Scroll animations JS
@@ -70,6 +70,7 @@ function sprinkleberry_scripts() {
 add_action( 'wp_enqueue_scripts', 'sprinkleberry_scripts' );
 
 require get_template_directory() . '/inc/orders.php';
+require get_template_directory() . '/inc/order-board.php';
 
 
 /**
@@ -116,6 +117,11 @@ function sprinkleberry_ensure_pages() {
 			'slug'     => 'about',
 			'title'    => 'About',
 			'template' => 'page-about.php',
+		),
+		array(
+			'slug'     => 'orders',
+			'title'    => 'Orders',
+			'template' => 'page-orders.php',
 		),
 	);
 
