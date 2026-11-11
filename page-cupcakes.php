@@ -4,7 +4,7 @@
  */
 get_header();
 
-$title         = 'Cupcakes';
+$title         = 'Custom Cupcakes in Clearfield, Utah';
 $intro         = 'Made-to-order cupcakes in the themes, flavors, and colors you want. Perfect for parties, dessert tables, or a box of something sweet to share.';
 $cta_label     = 'Order My Cupcakes Now';
 $order_type    = 'cupcakes';
