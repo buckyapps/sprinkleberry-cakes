@@ -4,7 +4,7 @@ Theme URI: https://sprinkleberrycakes.com
 Author: Custom for Raquel Oreggia
 Author URI: 
 Description: Modern, elegant WordPress theme for Sprinkle Berry Cakes bakery in Clearfield, Utah. Features smooth scroll animations, custom cake showcase, and clean bakery aesthetic.
-Version: 1.7.16
+Version: 1.7.17
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
@@ -1330,7 +1330,7 @@ body.lightbox-open {
 .board-link { display: block; color: #2f9aa6; font-weight: 600; margin-bottom: 4px; }
 .board-details { margin-top: 10px; white-space: pre-wrap; }
 .board-status { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-.board-status button { border: 1px solid #e89aab; background: #fff; border-radius: 999px; padding: 8px 14px; }
+.board-status button { border: 1px solid #e89aab; background: #fff; color: #e30a71; border-radius: 999px; padding: 8px 14px; font-weight: 600; }
 .board-status button.is-on { background: #e30a71; color: #fff; border-color: #e30a71; }
 .board-card.status-done { opacity: 0.7; }
 .board-empty { background: #fff; border-radius: 18px; padding: 24px; }
@@ -1339,3 +1339,7 @@ body.lightbox-open {
 .board-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;}
 .board-actions .board-status{margin-top:0;}
 .board-remove{background:transparent;border:none;color:#9a3d52;font-weight:600;padding:8px 4px;}
+
+.board-date{display:flex;align-items:center;gap:10px;margin-top:12px;}
+.board-date label{font-weight:600;color:#3d3a38;}
+.board-date input{border:1px solid #e89aab;border-radius:10px;padding:8px 10px;color:#2c2a28;background:#fff;}
