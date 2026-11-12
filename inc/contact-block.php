@@ -58,6 +58,10 @@ $maps = 'https://share.google/SR1xUsRwcMQeOmlZv';
 						<input type="tel" id="order_phone" name="order_phone">
 					</div>
 					<div class="form-group">
+						<label for="order_date">Date needed</label>
+						<input type="date" id="order_date" name="order_date" required>
+					</div>
+					<div class="form-group">
 						<label for="order_type">What are you ordering?</label>
 						<select id="order_type" name="order_type">
 							<?php
@@ -84,7 +88,7 @@ $maps = 'https://share.google/SR1xUsRwcMQeOmlZv';
 					</div>
 					<div class="form-group">
 						<label for="order_message">Details / Occasion</label>
-						<textarea id="order_message" name="order_message" placeholder="Date needed, number of servings, theme, flavors..."></textarea>
+						<textarea id="order_message" name="order_message" placeholder="Number of servings, theme, flavors..."></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary" style="width:100%;">Send Request</button>
 				</form>
