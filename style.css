@@ -4,7 +4,7 @@ Theme URI: https://sprinkleberrycakes.com
 Author: Custom for Raquel Oreggia
 Author URI: 
 Description: Modern, elegant WordPress theme for Sprinkle Berry Cakes bakery in Clearfield, Utah. Features smooth scroll animations, custom cake showcase, and clean bakery aesthetic.
-Version: 1.7.14
+Version: 1.7.15
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
@@ -1334,3 +1334,8 @@ body.lightbox-open {
 .board-status button.is-on { background: #e30a71; color: #fff; border-color: #e30a71; }
 .board-card.status-done { opacity: 0.7; }
 .board-empty { background: #fff; border-radius: 18px; padding: 24px; }
+
+.sbc-hp{position:absolute;left:-9999px;height:0;overflow:hidden;}
+.board-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;}
+.board-actions .board-status{margin-top:0;}
+.board-remove{background:transparent;border:none;color:#9a3d52;font-weight:600;padding:8px 4px;}
