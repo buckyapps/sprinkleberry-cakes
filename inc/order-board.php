@@ -105,6 +105,20 @@ function sprinkleberry_order_statuses() {
 	);
 }
 
+function sprinkleberry_board_nocache() {
+	if ( ! is_page( 'orders' ) ) {
+		return;
+	}
+	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+		define( 'DONOTCACHEPAGE', true );
+	}
+	nocache_headers();
+	header( 'Cache-Control: private, no-store, no-cache, must-revalidate, max-age=0' );
+	header( 'Pragma: no-cache' );
+	header( 'Expires: 0' );
+}
+add_action( 'template_redirect', 'sprinkleberry_board_nocache', 0 );
+
 function sprinkleberry_handle_board() {
 	if ( ! is_page( 'orders' ) ) {
 		return;
@@ -117,8 +131,10 @@ function sprinkleberry_handle_board() {
 			$pass = isset( $_POST['sbc_board_pass'] ) ? (string) wp_unslash( $_POST['sbc_board_pass'] ) : '';
 			if ( hash_equals( sprinkleberry_board_password(), $pass ) ) {
 				sprinkleberry_board_set_cookie();
+				wp_safe_redirect( home_url( '/orders/?opened=1' ) );
+				exit;
 			}
-			wp_safe_redirect( home_url( '/orders/' ) );
+			wp_safe_redirect( home_url( '/orders/?bad=1' ) );
 			exit;
 		}
 
