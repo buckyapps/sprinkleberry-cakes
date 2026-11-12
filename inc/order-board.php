@@ -54,6 +54,49 @@ function sprinkleberry_board_clear_cookie() {
 	unset( $_COOKIE[ sprinkleberry_board_cookie() ] );
 }
 
+
+function sprinkleberry_order_is_spam( $name, $email, $phone, $details ) {
+	$email_l = strtolower( (string) $email );
+	$known   = array( 'gregoryj8tl2g@gmail.com' );
+	if ( in_array( $email_l, $known, true ) ) {
+		return true;
+	}
+	$digits = preg_replace( '/\D/', '', (string) $phone );
+	$us     = ( strlen( $digits ) === 10 ) || ( strlen( $digits ) === 11 && strpos( $digits, '1' ) === 0 );
+	if ( $digits !== '' && ! $us ) {
+		return true;
+	}
+	$text = strtolower( (string) $details );
+	$hits = array( 'az árát', 'vasu cijenu', 'vašu cijenu', 'wanted to know the price', 'know your price', 'what is your price' );
+	foreach ( $hits as $hit ) {
+		if ( $text !== '' && strpos( $text, $hit ) !== false ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function sprinkleberry_purge_spam_orders() {
+	$posts = get_posts(
+		array(
+			'post_type'      => 'sbc_order',
+			'post_status'    => 'private',
+			'posts_per_page' => 200,
+		)
+	);
+	foreach ( $posts as $post ) {
+		$spam = sprinkleberry_order_is_spam(
+			get_post_meta( $post->ID, 'sbc_name', true ),
+			get_post_meta( $post->ID, 'sbc_email', true ),
+			get_post_meta( $post->ID, 'sbc_phone', true ),
+			get_post_meta( $post->ID, 'sbc_details', true )
+		);
+		if ( $spam ) {
+			wp_trash_post( $post->ID );
+		}
+	}
+}
+
 function sprinkleberry_order_statuses() {
 	return array(
 		'new'       => 'New',
@@ -85,6 +128,16 @@ function sprinkleberry_handle_board() {
 			exit;
 		}
 
+		if ( $action === 'remove' && sprinkleberry_board_logged_in() ) {
+			check_admin_referer( 'sbc_board_status' );
+			$id = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
+			if ( $id && get_post_type( $id ) === 'sbc_order' ) {
+				wp_trash_post( $id );
+			}
+			wp_safe_redirect( home_url( '/orders/' ) );
+			exit;
+		}
+
 		if ( $action === 'status' && sprinkleberry_board_logged_in() ) {
 			check_admin_referer( 'sbc_board_status' );
 			$id     = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
@@ -99,6 +152,13 @@ function sprinkleberry_handle_board() {
 	}
 }
 add_action( 'template_redirect', 'sprinkleberry_handle_board' );
+
+function sprinkleberry_board_purge_on_view() {
+	if ( is_page( 'orders' ) && sprinkleberry_board_logged_in() && empty( $_POST['sbc_board_action'] ) ) {
+		sprinkleberry_purge_spam_orders();
+	}
+}
+add_action( 'template_redirect', 'sprinkleberry_board_purge_on_view', 20 );
 
 function sprinkleberry_board_orders() {
 	$posts = get_posts(
