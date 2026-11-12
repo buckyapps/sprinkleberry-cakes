@@ -55,6 +55,7 @@ function sprinkleberry_handle_order_form() {
 	$phone   = sanitize_text_field( wp_unslash( $_POST['order_phone'] ?? '' ) );
 	$type    = sanitize_text_field( wp_unslash( $_POST['order_type'] ?? '' ) );
 	$details = sanitize_textarea_field( wp_unslash( $_POST['order_message'] ?? '' ) );
+	$due     = sanitize_text_field( wp_unslash( $_POST['order_date'] ?? '' ) );
 	$label   = $labels[ $type ] ?? $type;
 
 	if ( ! $name || ! $email ) {
@@ -79,6 +80,9 @@ function sprinkleberry_handle_order_form() {
 		update_post_meta( $order_id, 'sbc_phone', $phone );
 		update_post_meta( $order_id, 'sbc_type', $label );
 		update_post_meta( $order_id, 'sbc_details', $details );
+		if ( preg_match( '/^\d{4}-\d{2}-\d{2}$/', $due ) ) {
+			update_post_meta( $order_id, 'sbc_due', $due );
+		}
 	}
 
 	$to      = 'Raoreggia@gmail.com';
@@ -91,7 +95,9 @@ function sprinkleberry_handle_order_form() {
 	$body .= "Name: {$name}\n";
 	$body .= "Email: {$email}\n";
 	$body .= "Phone: {$phone_line}\n";
-	$body .= "Ordering: {$label}\n\n";
+	$due_line = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $due ) ? date_i18n( 'F j, Y', strtotime( $due ) ) : 'Not given';
+	$body .= "Ordering: {$label}\n";
+	$body .= "Date needed: {$due_line}\n\n";
 	$body .= "DETAILS\n";
 	$body .= $details_block . "\n";
 
