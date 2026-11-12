@@ -54,6 +54,13 @@ $statuses  = sprinkleberry_order_statuses();
 								<?php if ( $order['details'] ) : ?>
 									<p class="board-details"><?php echo esc_html( $order['details'] ); ?></p>
 								<?php endif; ?>
+								<form class="board-date" method="post">
+									<input type="hidden" name="sbc_board_action" value="date">
+									<input type="hidden" name="order_id" value="<?php echo esc_attr( $order['id'] ); ?>">
+									<?php wp_nonce_field( 'sbc_board_status' ); ?>
+									<label>Date needed</label>
+									<input type="date" name="due_date" value="<?php echo esc_attr( $order['due'] ?? '' ); ?>" onchange="this.form.submit()">
+								</form>
 								<div class="board-actions">
 									<form class="board-status" method="post">
 										<input type="hidden" name="sbc_board_action" value="status">
