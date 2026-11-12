@@ -44,6 +44,12 @@ function sprinkleberry_handle_order_form() {
 	}
 
 	$labels  = sprinkleberry_order_labels();
+	$honeypot = isset( $_POST['company'] ) ? trim( (string) wp_unslash( $_POST['company'] ) ) : '';
+	if ( $honeypot !== '' ) {
+		wp_safe_redirect( home_url( '/about/?order=success#contact' ) );
+		exit;
+	}
+
 	$name    = sanitize_text_field( wp_unslash( $_POST['order_name'] ?? '' ) );
 	$email   = sanitize_email( wp_unslash( $_POST['order_email'] ?? '' ) );
 	$phone   = sanitize_text_field( wp_unslash( $_POST['order_phone'] ?? '' ) );
@@ -53,6 +59,10 @@ function sprinkleberry_handle_order_form() {
 
 	if ( ! $name || ! $email ) {
 		wp_safe_redirect( home_url( '/about/?order=missing#contact' ) );
+		exit;
+	}
+	if ( sprinkleberry_order_is_spam( $name, $email, $phone, $details ) ) {
+		wp_safe_redirect( home_url( '/about/?order=success#contact' ) );
 		exit;
 	}
 
