@@ -50,23 +50,19 @@ foreach ( $orders as $order ) {
 					</div>
 				</div>
 
-				<form method="post" id="board-bulk" onsubmit="return confirm('Cancel the selected orders?');">
-					<input type="hidden" name="sbc_board_action" value="remove_selected">
-					<?php wp_nonce_field( 'sbc_board_status' ); ?>
-					<div class="board-bulk-bar">
-						<button type="submit" class="btn btn-primary">Delete selected</button>
-					</div>
+				<div class="board-bulk-bar">
+					<button type="button" class="btn btn-primary" id="delete-selected">Delete selected</button>
+				</div>
 
-					<?php if ( empty( $active ) ) : ?>
-						<p class="board-empty">No open orders. New requests from the website will show up here.</p>
-					<?php else : ?>
-						<div class="board-list">
-							<?php foreach ( $active as $order ) : ?>
-								<?php include __DIR__ . '/inc/order-card.php'; ?>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-				</form>
+				<?php if ( empty( $active ) ) : ?>
+					<p class="board-empty">No open orders. New requests from the website will show up here.</p>
+				<?php else : ?>
+					<div class="board-list">
+						<?php foreach ( $active as $order ) : ?>
+							<?php include __DIR__ . '/inc/order-card.php'; ?>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 
 				<details class="board-past">
 					<summary>Past orders (<?php echo count( $past ); ?>)</summary>
@@ -80,6 +76,12 @@ foreach ( $orders as $order ) {
 						</div>
 					<?php endif; ?>
 				</details>
+
+				<form method="post" id="board-bulk">
+					<input type="hidden" name="sbc_board_action" value="remove_selected">
+					<?php wp_nonce_field( 'sbc_board_status' ); ?>
+					<div id="bulk-ids"></div>
+				</form>
 			<?php endif; ?>
 		</div>
 	</section>
@@ -91,6 +93,25 @@ foreach ( $orders as $order ) {
 	btn.addEventListener('click', function () {
 		document.body.classList.toggle('board-editing');
 		btn.textContent = document.body.classList.contains('board-editing') ? 'Done editing' : 'Edit';
+	});
+	var del = document.getElementById('delete-selected');
+	del.addEventListener('click', function () {
+		var checked = document.querySelectorAll('.board-check input:checked');
+		if (!checked.length) {
+			alert('Select at least one order.');
+			return;
+		}
+		if (!confirm('Cancel the selected orders?')) return;
+		var box = document.getElementById('bulk-ids');
+		box.innerHTML = '';
+		checked.forEach(function (input) {
+			var hidden = document.createElement('input');
+			hidden.type = 'hidden';
+			hidden.name = 'order_ids[]';
+			hidden.value = input.value;
+			box.appendChild(hidden);
+		});
+		document.getElementById('board-bulk').submit();
 	});
 })();
 </script>
