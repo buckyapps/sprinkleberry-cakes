@@ -47,7 +47,7 @@ function sprinkleberry_scripts() {
 		'sprinkleberry-style',
 		get_stylesheet_uri(),
 		array( 'sprinkleberry-fonts' ),
-		'1.7.15'
+		'1.7.17'
 	);
 
 	// Scroll animations JS
