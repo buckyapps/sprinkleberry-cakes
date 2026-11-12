@@ -23,6 +23,7 @@ foreach ( $orders as $order ) {
 				<div class="board-login">
 					<h1>Order requests</h1>
 					<p>For Raquel only. Enter the bakery password.</p>
+					<?php if ( isset( $_GET['bad'] ) ) : ?><p class="board-bad">That password did not match. Try RaquelBerry.</p><?php endif; ?>
 					<form method="post">
 						<input type="hidden" name="sbc_board_action" value="login">
 						<label class="screen-reader" for="sbc_board_pass">Password</label>
