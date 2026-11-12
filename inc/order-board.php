@@ -196,6 +196,7 @@ function sprinkleberry_board_orders() {
 			'type'    => get_post_meta( $post->ID, 'sbc_type', true ),
 			'details' => get_post_meta( $post->ID, 'sbc_details', true ),
 			'status'  => $status,
+			'due'     => get_post_meta( $post->ID, 'sbc_due', true ),
 		);
 	}
 	return $orders;
