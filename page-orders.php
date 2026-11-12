@@ -54,14 +54,22 @@ $statuses  = sprinkleberry_order_statuses();
 								<?php if ( $order['details'] ) : ?>
 									<p class="board-details"><?php echo esc_html( $order['details'] ); ?></p>
 								<?php endif; ?>
-								<form class="board-status" method="post">
-									<input type="hidden" name="sbc_board_action" value="status">
-									<input type="hidden" name="order_id" value="<?php echo esc_attr( $order['id'] ); ?>">
-									<?php wp_nonce_field( 'sbc_board_status' ); ?>
-									<?php foreach ( $statuses as $key => $label ) : ?>
-										<button type="submit" name="status" value="<?php echo esc_attr( $key ); ?>" class="<?php echo $order['status'] === $key ? 'is-on' : ''; ?>"><?php echo esc_html( $label ); ?></button>
-									<?php endforeach; ?>
-								</form>
+								<div class="board-actions">
+									<form class="board-status" method="post">
+										<input type="hidden" name="sbc_board_action" value="status">
+										<input type="hidden" name="order_id" value="<?php echo esc_attr( $order['id'] ); ?>">
+										<?php wp_nonce_field( 'sbc_board_status' ); ?>
+										<?php foreach ( $statuses as $key => $label ) : ?>
+											<button type="submit" name="status" value="<?php echo esc_attr( $key ); ?>" class="<?php echo $order['status'] === $key ? 'is-on' : ''; ?>"><?php echo esc_html( $label ); ?></button>
+										<?php endforeach; ?>
+									</form>
+									<form method="post">
+										<input type="hidden" name="sbc_board_action" value="remove">
+										<input type="hidden" name="order_id" value="<?php echo esc_attr( $order['id'] ); ?>">
+										<?php wp_nonce_field( 'sbc_board_status' ); ?>
+										<button type="submit" class="board-remove">Remove</button>
+									</form>
+								</div>
 							</article>
 						<?php endforeach; ?>
 					</div>
