@@ -128,6 +128,17 @@ function sprinkleberry_handle_board() {
 			exit;
 		}
 
+		if ( $action === 'date' && sprinkleberry_board_logged_in() ) {
+			check_admin_referer( 'sbc_board_status' );
+			$id   = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
+			$due  = isset( $_POST['due_date'] ) ? sanitize_text_field( wp_unslash( $_POST['due_date'] ) ) : '';
+			if ( $id && get_post_type( $id ) === 'sbc_order' && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $due ) ) {
+				update_post_meta( $id, 'sbc_due', $due );
+			}
+			wp_safe_redirect( home_url( '/orders/' ) );
+			exit;
+		}
+
 		if ( $action === 'remove' && sprinkleberry_board_logged_in() ) {
 			check_admin_referer( 'sbc_board_status' );
 			$id = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
