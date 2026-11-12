@@ -40,6 +40,10 @@ $maps = 'https://share.google/SR1xUsRwcMQeOmlZv';
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 					<input type="hidden" name="action" value="sprinkleberry_order">
 					<?php wp_nonce_field( 'sprinkleberry_order', 'sprinkleberry_order_nonce' ); ?>
+					<div class="sbc-hp" aria-hidden="true">
+						<label for="company">Company</label>
+						<input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+					</div>
 
 					<div class="form-group">
 						<label for="order_name">Your Name</label>
